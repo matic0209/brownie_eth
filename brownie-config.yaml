@@ -23,8 +23,7 @@ networks:
     aave_lending_pool_v2: "0xB53C1a33016B2DC2fF3653530bfF1848a515c8c5"
     weth: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
     variableDebtWethAddress: "0xF63B34710400CAd3e044cFfDcAb00a0f32E33eCf"
-    aaveAddress: "0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9";
-
+    aaveAddress: "0x7d2768dE32b0b80b7a3454c06BdAc94A69DDc7A9"
     default_balance: 2000000000000000000000000000
     cmd_settings:
       gas_limit: 12000000000000
