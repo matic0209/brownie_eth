@@ -5,7 +5,8 @@ from brownie import (
     Contract,
     web3,
     interface,
-
+    interface.VariableDebtToken,
+        interface.IAAVE
 
 
 )
