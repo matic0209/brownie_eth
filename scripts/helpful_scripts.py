@@ -4,8 +4,9 @@ from brownie import (
     config,
     Contract,
     web3,
+    interface,
     VariableDebtToken,
-    IAAVE
+        IAAVE
 
 
 )
