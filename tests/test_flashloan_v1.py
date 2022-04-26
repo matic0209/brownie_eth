@@ -10,7 +10,6 @@ from scripts.helpful_scripts import get_account, get_contract
 from conftest import *
 from brownie import (
     Wei,
-    address,
     accounts,
     Contract,
     config,
