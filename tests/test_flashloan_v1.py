@@ -15,7 +15,8 @@ from brownie import (
     Contract,
     config,
     network,
-    VariableDebtToken
+    interface,
+
 
 
 
@@ -38,8 +39,8 @@ def test_can_get_latest_price(strategy):
         )
     tokens = []
     tokens.append("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
-    int funds = Wei("1 ether")
-    int flashLoanFunds = (funds * 230) / 100;
+    funds = Wei("1 ether")
+    flashLoanFunds = (funds * 230) / 100;
     amounts = []
     amounts.append(flashLoanFunds)
 
