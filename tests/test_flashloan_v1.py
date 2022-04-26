@@ -51,7 +51,7 @@ def test_can_get_latest_price(strategy):
 
 
     aave = get_contract('aaveAddress')
-    (totalCollateralETH,totalDebtETH,availableBorrowsETH,currentLiquidationThreshold,ltv,healthFactor)= aave.getUserAccountData(accounts[0],{'from': accounts[0]})
+    (totalCollateralETH,totalDebtETH,availableBorrowsETH,currentLiquidationThreshold,ltv,healthFactor)= aave.getUserAccountData(accounts[0])
     log("totalCollateralETH: " + str(totalCollateralETH))
     log("totalDebtETH: " + str(totalDebtETH))
     log("availableBorrowsETH: " + str(availableBorrowsETH))

@@ -45,7 +45,7 @@ interface IAAVE {
     ) external;
 
     function getUserAccountData(address)
-        external
+        external view
         returns (
             uint256 totalCollateralETH,
             uint256 totalDebtETH,
