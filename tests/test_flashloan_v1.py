@@ -3,34 +3,53 @@
 # i.e. one that does not implement any custom logic.
 
 # The initial transfer should be removed prior to testing your final implementation.
+import pytest
+from brownie import *
+
+from scripts.helpful_scripts import get_account, get_contract
+from conftest import *
+from brownie import (
+    Wei,
+    address,
+    accounts,
+    Contract,
+    config,
+    network,
+    VariableDebtToken
 
 
-def test_eth_flashloan(accounts, ETH, flashloan_v1):
+
+)
+def log(text, desc=''):
+    print('\033[32m' + text + '\033[0m' + desc)
+
+def test_can_get_latest_price(strategy):
     """
-    Test a flashloan that borrows Ethereum.
+    Test that the strategy can get the latest price.
     """
 
-    # transfer ether to the flashloan contract
-    accounts[0].transfer(flashloan_v1, "2 ether")
+    # get the latest price
+    variabledebttoken = get_contract('variabledebttoken')
 
-    flashloan_v1.flashloan(ETH, {"from": accounts[0]})
+    variabledebttoken.approveDelegation(
+            strategy.address,
+            Wei("3 ether"),
+            {'from': accounts[0]}
+        )
+    tokens = []
+    tokens.append("0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2")
+    int funds = Wei("1 ether")
+    int flashLoanFunds = (funds * 230) / 100;
+    amounts = []
+    amounts.append(flashLoanFunds)
+
+    strategy.go(
+            tokens,
+            amounts,
+            {'from': accounts[0],"value": Wei("1 ether")}
+        )
 
 
-def test_dai_flashloan(Contract, accounts, DAI, flashloan_v1):
-    """
-    Test a flashloan that borrows DAI.
-
-    To use a different asset, swap DAI with any of the fixture names in `tests/conftest.py`
-    """
-
-    # purchase DAI on uniswap
-    uniswap_dai = Contract.from_explorer("0x2a1530C4C41db0B0b2bB646CB5Eb1A67b7158667")
-    uniswap_dai.ethToTokenSwapInput(
-        1, 10000000000, {"from": accounts[0], "value": "2 ether"}
-    )
-
-    # transfer DAI to the flashloan contract
-    balance = DAI.balanceOf(accounts[0])
-    DAI.transfer(flashloan_v1, balance, {"from": accounts[0]})
-
-    flashloan_v1.flashloan(DAI, {"from": accounts[0]})
+    aave = get_contract('aaveAddress')
+    (totalCollateralETH,totalDebtETH,availableBorrowsETH,currentLiquidationThreshold,ltv,healthFactor)= aave.getUserAccountData(accounts[0])
+    assert ltv == 7000

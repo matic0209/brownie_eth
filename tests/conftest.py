@@ -1,4 +1,20 @@
 import pytest
+from brownie import web3
+from web3.auto import w3
+from brownie.network.gas.strategies import GasNowStrategy
+gas_strategy = GasNowStrategy("fast")
+from brownie import (
+    accounts,
+    Contract,
+    config,
+    network,
+    Strategy,
+
+)
+
+from scripts.helpful_scripts import (
+    LOCAL_BLOCKCHAIN_ENVIRONMENTS, get_account, get_contract
+)
 
 
 @pytest.fixture(autouse=True)
@@ -12,11 +28,12 @@ def setup(fn_isolation):
 
 
 @pytest.fixture(scope="module")
-def aave_lending_pool_v1(Contract):
+def strategy():
     """
     Yield a `Contract` object for the Aave lending pool address provider.
     """
-    yield Contract("0x24a42fD28C976A61Df5D00D0599C34c4f90748c8")
+    yield Strategy.deploy( {"from": accounts[0]})
+
 
 
 @pytest.fixture(scope="module")
