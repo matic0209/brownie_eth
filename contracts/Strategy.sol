@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
-import {IBalancer, IERC20, IWETH, ILido, IAAVE} from "./interfaces.sol";
+import {IBalancer, IERC20, IWETH, ILido, IAAVE} from "../interfaces/interfaces.sol";
 
 contract Strategy {
     error NotBalancer();
