@@ -5,8 +5,9 @@ from brownie import (
     Contract,
     web3,
     interface,
-    interface.VariableDebtToken,
-        interface.IAAVE
+
+
+
 
 
 )
@@ -22,8 +23,8 @@ LOCAL_BLOCKCHAIN_ENVIRONMENTS = NON_FORKED_LOCAL_BLOCKCHAIN_ENVIRONMENTS + [
 BLOCK_CONFIRMATIONS_FOR_VERIFICATION = 6
 
 contract_to_mock = {
-    "variableDebtWethAddress":VariableDebtToken,
-    "aaveAddress" :IAAVE
+    "variableDebtWethAddress":interface.VariableDebtToken,
+    "aaveAddress" :interface.IAAVE
 
 }
 
