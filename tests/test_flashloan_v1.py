@@ -29,7 +29,7 @@ def test_can_get_latest_price(strategy):
     """
 
     # get the latest price
-    variabledebttoken = get_contract('variabledebttoken')
+    variabledebttoken = get_contract('variableDebtWethAddress')
 
     variabledebttoken.approveDelegation(
             strategy.address,
