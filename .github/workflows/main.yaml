@@ -6,11 +6,9 @@ on:
     - cron: "* 13 * * 1"
 
 name: main workflow
-
 env:
-  ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
-
-  WEB3_INFURA_PROJECT_ID: ${{ secrets.WEB3_INFURA_PROJECT_ID }}
+  ETHERSCAN_TOKEN: ${{secrets.ETHERSCAN_TOKEN}}
+  WEB3_INFURA_PROJECT_ID: ${{secrets.WEB3_INFURA_PROJECT_ID}}
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 
   # increasing available memory for node reduces issues with ganache crashing
@@ -48,4 +46,4 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Run Tests
-      run: brownie test
+      run: brownie test tests/test_flashloan_v1.py -s  --network mainnet-fork
