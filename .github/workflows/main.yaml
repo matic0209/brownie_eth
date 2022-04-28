@@ -9,7 +9,7 @@ name: main workflow
 
 env:
   ETHERSCAN_TOKEN: ${{ secrets.ETHERSCAN_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   WEB3_INFURA_PROJECT_ID: ${{ secrets.WEB3_INFURA_PROJECT_ID }}
   PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
 
